@@ -547,6 +547,12 @@
             will-change: auto;
         }
 
+        .additional-activities {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
         .support-info {
             margin-top: 0.8rem;
             font-size: 0.7rem;
@@ -913,7 +919,6 @@
 
 <body>
 
-    <body class="custom-cursor"></body>
     <div class="particles" id="particles"></div>
     <div class="main-content">
         <div class="avatar-container" id="avatarContainer" onclick="profileClick()">
@@ -961,7 +966,9 @@ Discord
         <div class="loader"></div>
     </div>
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        let showMoreExpanded = false;
+        let lastActivityMarkup = "";
+        let lastBadgeMarkup = "";
+        const defaultBadgeFallbackImage = "https://cdn.discordapp.com/badge-icons/2ba85e8026a8614b640c2837bcdfe21b.png";
         const badges = [
                       {
                 description: "Vencord Badge",
@@ -981,7 +988,8 @@ Discord
             },
             {
                 description: "Server boosting since Aug 12, 2025",
-                image: "https://discordresources.com/img/boosts/discordboost1.svg"
+                image: "https://discordresources.com/img/boosts/discordboost1.svg",
+                fallback: "https://discord.com/assets/b4b741bef6c3de9b29e2e0653e294620.svg"
             },
             {
                 description: "Completed a Quest",
@@ -1045,33 +1053,54 @@ Discord
                 statusCircle.classList.remove('clicked');
             }, 600);
         }
+        function createBadgesMarkup() {
+            return `
+                <div class="badges">
+                    ${badges.map(badge => `
+                    <div class="badge">
+                        <img src="${badge.image}" alt="${badge.description} badge" onerror="handleBadgeImageError(this, '${badge.fallback || defaultBadgeFallbackImage}')" />
+                        <span class="badge-tooltip">${badge.description}</span>
+                    </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+        function handleBadgeImageError(img, fallbackSrc) {
+            // First failure: try fallback. Second failure: hide image to avoid alt-text layout breaks.
+            if (!img.dataset.fallbackTried) {
+                img.dataset.fallbackTried = "1";
+                img.src = fallbackSrc;
+                return;
+            }
+            img.style.display = "none";
+        }
         async function fetchDiscordPresence() {
             try {
                 const res = await fetch('https://api.lanyard.rest/v1/users/1163470989867356210');
                 const data = await res.json();
                 const user = data.data.discord_user;
                 const presence = data.data.discord_status;
-                const activities = data.data.activities || [];
+                const activities = (data.data.activities || []).filter(activity => {
+                    // Hide Discord custom status so the main activity is the actual app/game.
+                    return activity.type !== 4;
+                });
                 const activeWeb = data.data.active_on_discord_web;
                 const activeDesktop = data.data.active_on_discord_desktop;
                 const activeMobile = data.data.active_on_discord_mobile;
                 const activeEmbedded = data.data.active_on_discord_embedded;
                 const avatarDecoration = data.data.avatar_decoration_data;
-                document.getElementById("avatar").src = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=1024`;
+                const avatarElement = document.getElementById("avatar");
+                const nextAvatarSrc = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=1024`;
+                if (avatarElement.src !== nextAvatarSrc) {
+                    avatarElement.src = nextAvatarSrc;
+                }
                 document.getElementById("username").childNodes[0].textContent = `@${user.username}`;
                 const handleDiv = document.getElementById("handle");
-                handleDiv.innerHTML = `<span></span>`;
-                const badgesHTML = `
-                    <div class="badges">
-                        ${badges.map(badge => `
-                        <div class="badge">
-                            <img src="${badge.image}" alt="${badge.description} badge" />
-                            <span class="badge-tooltip">${badge.description}</span>
-                        </div>
-                        `).join('')}
-                    </div>
-                `;
-                handleDiv.innerHTML += badgesHTML;
+                const badgesHTML = createBadgesMarkup();
+                if (lastBadgeMarkup !== badgesHTML) {
+                    handleDiv.innerHTML = `<span></span>${badgesHTML}`;
+                    lastBadgeMarkup = badgesHTML;
+                }
                 const decorationImg = document.getElementById("avatar-decoration");
                 const fallbackDecorationUrl = 'https://cdn.discordapp.com/avatar-decoration-presets/a_c3cffc19e9784f7d0b005eecdf1b566e.png?size=512&passthrough=true';
                 if (avatarDecoration && avatarDecoration.asset) {
@@ -1115,15 +1144,19 @@ Discord
                 };
                 const color = statusColor[presence] || "#3b3b3b";
                 document.getElementById("statusCircle").style.backgroundColor = color;
-                const style = document.createElement("style");
-                style.innerHTML = `
+                let pulseStyle = document.getElementById("presencePulseStyle");
+                if (!pulseStyle) {
+                    pulseStyle = document.createElement("style");
+                    pulseStyle.id = "presencePulseStyle";
+                    document.head.appendChild(pulseStyle);
+                }
+                pulseStyle.innerHTML = `
                     @keyframes pulse {
                         0% { transform: scale(1); box-shadow: 0 0 0 0 ${color}99; }
                         70% { transform: scale(1.5); box-shadow: 0 0 0 10px ${color}00; }
                         100% { transform: scale(1); box-shadow: 0 0 0 0 ${color}00; }
                     }
                 `;
-                document.head.appendChild(style);
                 const iconsContainer = document.getElementById("platformIcons");
                 iconsContainer.innerHTML = "";
                 const customIcons = {
@@ -1162,7 +1195,7 @@ Discord
                 if (activeEmbedded) iconsContainer.innerHTML += '<i class="fas fa-code"></i>';
                 const activityContainer = document.getElementById("activityStatus");
                 if (activities.length === 0) {
-                    activityContainer.innerHTML = `
+                    const idleMarkup = `
                         <div class="no-activity">
                         <div class="no-activity-text">Currently Idle</div>
                         <div class="no-activity-subtext">
@@ -1176,6 +1209,10 @@ Discord
                         </div>
                         </div>
                     `;
+                    if (lastActivityMarkup !== idleMarkup) {
+                        activityContainer.innerHTML = idleMarkup;
+                        lastActivityMarkup = idleMarkup;
+                    }
                     document.querySelector('.main-content').classList.remove('expanded');
                 } else {
                     const mainActivity = activities[0];
@@ -1183,38 +1220,21 @@ Discord
                     let activitiesHTML = '<div class="activities-container">';
                     activitiesHTML += createActivityHTML(mainActivity, true);
                     if (additionalActivities.length > 0) {
-                        activitiesHTML += `<div class="hidden-activities" id="hiddenActivities"${showMoreExpanded ? ' style="display: flex; flex-direction: column; gap: 12px;"' : ''}>`;
+                        activitiesHTML += `<div class="additional-activities">`;
                         additionalActivities.forEach(activity => {
                             activitiesHTML += createActivityHTML(activity, false);
                         });
                         activitiesHTML += '</div>';
-                        activitiesHTML += `
-                            <button class="show-more-btn" id="showMoreBtn" onclick="toggleShowMore()">
-                                <i class="fas fa-chevron-${showMoreExpanded ? 'up' : 'down'}"></i> 
-                                ${showMoreExpanded ? 'Show Less' : `Show More (${additionalActivities.length})`}
-                            </button>
-                        `;
                     }
                     activitiesHTML += '</div>';
-                    activityContainer.innerHTML = activitiesHTML;
+                    if (lastActivityMarkup !== activitiesHTML) {
+                        activityContainer.innerHTML = activitiesHTML;
+                        lastActivityMarkup = activitiesHTML;
+                    }
                     if (additionalActivities.length > 0) {
                         document.querySelector('.main-content').classList.add('expanded');
                     } else {
                         document.querySelector('.main-content').classList.remove('expanded');
-                    }
-                    if (showMoreExpanded && additionalActivities.length > 0) {
-                        setTimeout(() => {
-                            const hiddenActivities = document.getElementById('hiddenActivities');
-                            if (hiddenActivities) {
-                                hiddenActivities.style.display = 'flex';
-                                hiddenActivities.style.flexDirection = 'column';
-                                hiddenActivities.style.gap = '12px';
-                                hiddenActivities.classList.add('show');
-                                hiddenActivities.offsetHeight;
-                                hiddenActivities.style.opacity = '1';
-                                hiddenActivities.style.transform = 'translateY(0)';
-                            }
-                        }, 50);
                     }
                 }
             } catch (error) {
@@ -1314,32 +1334,9 @@ Discord
                 `;
             }
         }
-        function toggleShowMore() {
-            const hiddenActivities = document.getElementById('hiddenActivities');
-            const showMoreBtn = document.getElementById('showMoreBtn');
-            if (!hiddenActivities || !showMoreBtn) return;
-            if (showMoreExpanded) {
-                hiddenActivities.style.opacity = '0';
-                hiddenActivities.style.transform = 'translateY(-10px)';
-                setTimeout(() => {
-                    hiddenActivities.classList.remove('show');
-                    hiddenActivities.style.display = 'none';
-                    showMoreBtn.innerHTML = '<i class="fas fa-chevron-down"></i> Show More';
-                }, 200);
-                showMoreExpanded = false;
-            } else {
-                hiddenActivities.style.display = 'flex';
-                hiddenActivities.style.flexDirection = 'column';
-                hiddenActivities.style.gap = '12px';
-                hiddenActivities.classList.add('show');
-                hiddenActivities.offsetHeight;
-                showMoreBtn.innerHTML = '<i class="fas fa-chevron-up"></i> Show Less';
-                showMoreExpanded = true;
-            }
-        }
         createParticles();
         fetchDiscordPresence();
-        setInterval(fetchDiscordPresence, 1000);
+        setInterval(fetchDiscordPresence, 5000);
         setTimeout(() => {
             document.getElementById('loadingScreen').style.display = 'none';
         }, 1000);

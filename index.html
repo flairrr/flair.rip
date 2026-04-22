@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,27 +7,28 @@
     <meta name="theme-color" content="#000000">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="description" content="flair.rip presence – dsc presence viewer">
-    <meta name="keywords" content="discord presence, flair.rip, discord status, presence viewer, discord tracking, flair social">
+    <meta name="description" content="flair.rip presence ? dsc presence viewer">
+    <meta name="keywords" content="discord presence, flair.rip, discord status, presence viewer, discord tracking, flair">
     <meta name="author" content="flair.rip">
     <meta property="og:type" content="website">
     <meta property="og:title" content="user: flair">
     <meta property="og:description" content="dsc presence viewer">
-    <meta property="og:url" content="https://flair.rip/">
-    <meta property="og:site_name" content="flair.rip">
+    <meta property="og:url" content="https://flair/">
+    <meta property="og:site_name" content="flair">
     <meta property="og:image" content="https://cdn.discordapp.com/avatars/341418589120757760/2dea3bdca389f47b26b0993ab4450fe4.webp?size=1024">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="dsc presence screenshot">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="user: flair">
-    <meta name="twitter:description" content="flair.rip | information hub | meow meow">
+    <meta name="twitter:description" content="flair.rip | information hub | hi">
     <meta name="twitter:image" content="https://cdn.discordapp.com/avatars/341418589120757760/2dea3bdca389f47b26b0993ab4450fe4.webp?size=1024">
-    <meta name="twitter:image:alt" content="meow meow">
-    <meta name="twitter:site" content="@flair.rip">
-    <meta name="twitter:creator" content="@flair.rip">
+    <meta name="twitter:image:alt" content="hey">
+    <meta name="twitter:site" content="@flair">
+    <meta name="twitter:creator" content="@flair">
     <title>flair.rip</title>
-    <link rel="icon" href="https://i.ibb.co/b54ZcdBK/lll.webp">
+     <link rel="icon" href="https://i.ibb.co/SwB9mx0C/bubbles.webp" type="image/webp">
+     <link rel="icon" href="https://i.ibb.co/SwB9mx0C/bubbles.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
@@ -70,69 +70,71 @@
         }
 
         @keyframes float {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: translateY(0px) rotate(0deg);
                 opacity: 0.3;
             }
-
             50% {
                 transform: translateY(-20px) rotate(180deg);
                 opacity: 0.8;
             }
         }
 
+        /* Updated main content to be more dynamic with better spacing */
         .main-content {
             z-index: 10;
             position: relative;
-            backdrop-filter: blur(10px);
-            padding: 1.2rem;
-            border-radius: 16px;
-            background: rgba(13, 13, 13, 0.7);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 2rem;
+            border-radius: 20px;
+            background: rgba(13, 13, 13, 0.8);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             width: 100%;
-            max-width: 320px;
-            min-width: 280px;
+            max-width: 420px;
+            min-width: 320px;
             box-sizing: border-box;
             animation: breathe 4s ease-in-out infinite;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .main-content:hover {
             animation-play-state: paused;
-            transform: scale(1.01);
+            transform: scale(1.02) translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+            border-color: rgba(255, 255, 255, 0.25);
         }
 
+        /* Enhanced avatar container with more interactive effects */
         .avatar-container {
             position: relative;
-            width: 89px;
-            height: 89px;
-            margin: 0 auto 0.8rem;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1.2rem;
             border-radius: 50%;
             border: 4px solid transparent;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             overflow: visible;
         }
 
         .avatar-container:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
-            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
+            transform: scale(1.12) rotate(5deg);
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.4);
+            filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));
         }
 
         .avatar-container:active {
-            transform: scale(0.95);
-            transition: all 0.1s ease;
+            transform: scale(0.95) rotate(-2deg);
+            transition: all 0.15s ease;
         }
 
         .avatar {
             width: 100%;
             height: 100%;
-            border-radius: 55%;
+            border-radius: 50%;
             object-fit: cover;
-            border: 2px solid #0d0d0d;
+            border: 3px solid #0d0d0d;
             transition: all 0.4s ease;
             filter: saturate(1);
             z-index: 1;
@@ -140,10 +142,10 @@
 
         .avatar-decoration {
             position: absolute;
-            top: -15px;
-            left: -15px;
-            width: 120px;
-            height: 120px;
+            top: -18px;
+            left: -18px;
+            width: 136px;
+            height: 136px;
             object-fit: contain;
             z-index: 3;
             pointer-events: none;
@@ -153,113 +155,117 @@
 
         .avatar-container:hover .avatar,
         .avatar-container:hover .avatar-decoration {
-            filter: brightness(1.15) saturate(1.2) contrast(1.1);
+            filter: brightness(1.2) saturate(1.3) contrast(1.15);
         }
 
         .avatar-container:hover .avatar-decoration {
-            transform: scale(1.08);
+            transform: scale(1.1) rotate(-5deg);
         }
 
-        @media (max-width: 480px) {
-            .avatar-decoration {
-                width: 135px;
-                height: 135px;
-                top: -12.5px;
-                left: -12.5px;
-            }
-        }
-
+        /* Enhanced status circle with pulsing animation */
         .status-circle {
             position: absolute;
-            bottom: -4px;
-            right: -4px;
-            width: 18px;
-            height: 18px;
+            bottom: -6px;
+            right: -6px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
-            border: 2px solid #0d0d0d;
+            border: 3px solid #0d0d0d;
             background-color: #3b3b3b;
             transition: all 0.3s ease;
             z-index: 4;
+            animation: statusPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes statusPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
 
         .status-circle.clicked {
             animation: pulse 0.6s ease-out;
         }
 
+        /* Enhanced username with better gradient and glow */
         .username {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-weight: 700;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             color: white;
-            background: linear-gradient(45deg, #fff, #ccc);
+            background: linear-gradient(135deg, #fff, #e0e0e0, #fff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: textGlow 3s ease-in-out infinite alternate;
             transition: all 0.3s ease;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.4rem;
         }
 
         @keyframes textGlow {
             0% {
-                filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+                filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
             }
-
             100% {
-                filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6));
+                filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7));
             }
         }
 
         .username:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px) scale(1.05);
             animation-play-state: paused;
         }
 
         .platform-icons {
             display: flex;
-            gap: 4px;
-            font-size: 1rem;
+            gap: 6px;
+            font-size: 1.1rem;
             color: white;
         }
 
         .platform-icons img {
-            transition: transform 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 6px;
+            will-change: transform;
+            backface-visibility: hidden;
+            transform: translateZ(0);
         }
 
         .platform-icons img:hover {
-            transform: scale(1.2);
+            transform: scale(1.3) rotate(10deg) translateZ(0);
         }
 
         .user-handle {
-            margin-bottom: 0.6rem;
-            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
             color: #b3b3b3;
             opacity: 0.8;
-            transition: opacity 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .user-handle:hover {
             opacity: 1;
+            transform: translateY(-2px);
         }
 
+        /* Enhanced activity status with better animations */
         .activity-status {
-            margin-top: 0.6rem;
-            font-size: 0.8rem;
+            margin-top: 1rem;
+            font-size: 0.85rem;
             color: #aaa;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 8px;
             flex-wrap: wrap;
-            padding: 0.8rem;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s ease;
+            padding: 1.2rem;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
@@ -271,7 +277,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
             transform: rotate(45deg);
             animation: shimmerActivity 4s infinite;
         }
@@ -280,45 +286,53 @@
             0% {
                 transform: translateX(-100%) translateY(-100%) rotate(45deg);
             }
-
             100% {
                 transform: translateX(100%) translateY(100%) rotate(45deg);
             }
         }
 
         .activity-status:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.25);
         }
 
         .activity-status img {
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
             object-fit: cover;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .activity-status img:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
         }
 
+        /* Enhanced no-activity state with better visual feedback */
         .no-activity {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
-            padding: 1rem;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-            border: 2px dashed rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
+            gap: 12px;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+            border: 2px dashed rgba(255, 255, 255, 0.25);
+            border-radius: 16px;
             position: relative;
             overflow: hidden;
             width: 100%;
             box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        .no-activity:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.35);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
         }
 
         .no-activity:before {
@@ -329,33 +343,30 @@
             right: -2px;
             bottom: -2px;
             background: linear-gradient(45deg,
-                    rgba(255, 255, 255, 0.1) 0%,
-                    rgba(255, 255, 255, 0.05) 25%,
-                    rgba(255, 255, 255, 0.1) 50%,
-                    rgba(255, 255, 255, 0.05) 75%,
-                    rgba(255, 255, 255, 0.1) 100%);
-            border-radius: 18px;
+                    rgba(255, 255, 255, 0.15) 0%,
+                    rgba(255, 255, 255, 0.08) 25%,
+                    rgba(255, 255, 255, 0.15) 50%,
+                    rgba(255, 255, 255, 0.08) 75%,
+                    rgba(255, 255, 255, 0.15) 100%);
+            border-radius: 20px;
             z-index: -1;
             animation: gradientShift 3s ease-in-out infinite;
         }
 
         @keyframes gradientShift {
-
-            0%,
-            100% {
+            0%, 100% {
                 background-position: 0% 50%;
             }
-
             50% {
                 background-position: 100% 50%;
             }
         }
 
         .no-activity-text {
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 600;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 0.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0.5rem;
             background: linear-gradient(45deg, #fff, #ccc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -363,22 +374,22 @@
         }
 
         .no-activity-subtext {
-            font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
             text-align: center;
-            line-height: 1.3;
+            line-height: 1.4;
         }
 
         .floating-dots {
             display: flex;
-            gap: 3px;
-            margin-top: 6px;
+            gap: 4px;
+            margin-top: 8px;
         }
 
         .dot {
-            width: 6px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.3);
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.4);
             border-radius: 50%;
             animation: dotFloat 1.5s ease-in-out infinite;
         }
@@ -396,15 +407,12 @@
         }
 
         @keyframes dotFloat {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: translateY(0);
-                opacity: 0.3;
+                opacity: 0.4;
             }
-
             50% {
-                transform: translateY(-8px);
+                transform: translateY(-10px);
                 opacity: 1;
             }
         }
@@ -412,33 +420,35 @@
         .activities-container {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 16px;
             width: 100%;
             margin: 0 auto;
         }
 
         .main-content.expanded {
-            max-width: 320px;
-            transition: all 0.3s ease;
+            max-width: 450px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        /* Enhanced activity items with better hover effects */
         .activity-item {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 8px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
 
         .activity-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.25);
         }
 
         .activity-item:before {
@@ -448,7 +458,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.02), transparent);
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03), transparent);
             transform: rotate(45deg);
             animation: shimmer 3s infinite;
         }
@@ -457,18 +467,22 @@
             0% {
                 transform: translateX(-100%) translateY(-100%) rotate(45deg);
             }
-
             100% {
                 transform: translateX(100%) translateY(100%) rotate(45deg);
             }
         }
 
         .activity-item img {
-            width: 28px;
-            height: 28px;
-            border-radius: 6px;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
             object-fit: cover;
             flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .activity-item:hover img {
+            transform: scale(1.1) rotate(3deg);
         }
 
         .activity-info {
@@ -479,28 +493,30 @@
         .activity-name {
             font-weight: 600;
             color: white;
-            font-size: 0.75rem;
-            margin-bottom: 1px;
+            font-size: 0.8rem;
+            margin-bottom: 2px;
         }
 
         .activity-state {
             color: #aaa;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
         }
 
+        /* Enhanced show more button with better animations */
         .show-more-btn {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 25px;
             color: white;
-            padding: 8px 16px;
-            font-size: 0.8rem;
+            padding: 12px 20px;
+            font-size: 0.85rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 8px;
-            backdrop-filter: blur(5px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 12px;
+            backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
+            font-weight: 500;
         }
 
         .show-more-btn:before {
@@ -510,7 +526,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
             transition: left 0.5s ease;
         }
 
@@ -519,10 +535,10 @@
         }
 
         .show-more-btn:hover {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.1));
+            border-color: rgba(255, 255, 255, 0.35);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
         .hidden-activities {
@@ -535,7 +551,7 @@
         .hidden-activities.show {
             display: flex !important;
             flex-direction: column !important;
-            gap: 12px !important;
+            gap: 16px !important;
             opacity: 1 !important;
             transform: translateY(0) !important;
             transition: opacity 0.4s ease, transform 0.4s ease !important;
@@ -548,14 +564,21 @@
         }
 
         .support-info {
-            margin-top: 0.8rem;
-            font-size: 0.7rem;
+            margin-top: 1.2rem;
+            font-size: 0.75rem;
             color: #888;
-            padding: 0.6rem;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .support-info:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.15);
         }
 
         .support-info a {
@@ -567,7 +590,7 @@
 
         .support-info a:hover {
             color: #7db4ff;
-            text-shadow: 0 0 10px rgba(92, 154, 255, 0.5);
+            text-shadow: 0 0 15px rgba(92, 154, 255, 0.6);
         }
 
         .support-info a:after {
@@ -586,33 +609,34 @@
         }
 
         .footer {
-            margin-top: 0.6rem;
-            font-size: 0.65rem;
+            margin-top: 1rem;
+            font-size: 0.7rem;
             color: #666;
             opacity: 0.7;
-            transition: opacity 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .footer:hover {
             opacity: 1;
+            transform: translateY(-1px);
         }
 
         .progress-container {
             display: flex;
             align-items: center;
-            gap: 8px;
-            width: 250px;
-            margin-top: 4px;
-            font-size: 0.85rem;
+            gap: 10px;
+            width: 280px;
+            margin-top: 6px;
+            font-size: 0.9rem;
             color: #ccc;
             user-select: none;
         }
 
         .progress-bar {
             flex-grow: 1;
-            height: 3px;
-            background: #fff5;
-            border-radius: 2px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
             overflow: hidden;
             position: relative;
         }
@@ -620,7 +644,7 @@
         .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, #1db954, #1ed760);
-            border-radius: 2px;
+            border-radius: 3px;
             transition: width 0.3s ease;
             width: 0%;
             position: relative;
@@ -633,50 +657,49 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
             animation: shimmer 2s infinite;
         }
 
         .music-visualizer {
             display: flex;
             align-items: end;
-            gap: 2px;
-            height: 20px;
-            margin-left: 8px;
+            gap: 3px;
+            height: 24px;
+            margin-left: 10px;
         }
 
         .bar {
-            width: 3px;
+            width: 4px;
             background: #1db954;
-            border-radius: 2px;
+            border-radius: 3px;
             animation: musicBar 0.8s ease-in-out infinite alternate;
         }
 
         .bar:nth-child(1) {
             animation-delay: 0.1s;
-            height: 5px;
+            height: 6px;
         }
 
         .bar:nth-child(2) {
             animation-delay: 0.2s;
-            height: 10px;
+            height: 12px;
         }
 
         .bar:nth-child(3) {
             animation-delay: 0.3s;
-            height: 15px;
+            height: 18px;
         }
 
         .bar:nth-child(4) {
             animation-delay: 0.4s;
-            height: 8px;
+            height: 10px;
         }
 
         @keyframes musicBar {
             from {
                 transform: scaleY(0.3);
             }
-
             to {
                 transform: scaleY(1);
             }
@@ -687,25 +710,20 @@
                 transform: translateY(0px) rotate(0deg);
                 opacity: 0.7;
             }
-
             50% {
-                transform: translateY(-10px) rotate(180deg);
+                transform: translateY(-12px) rotate(180deg);
                 opacity: 1;
             }
-
             100% {
-                transform: translateY(-20px) rotate(360deg);
+                transform: translateY(-24px) rotate(360deg);
                 opacity: 0.3;
             }
         }
 
         @keyframes breathe {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: scale(1);
             }
-
             50% {
                 transform: scale(1.02);
             }
@@ -717,7 +735,7 @@
             }
 
             .main-content {
-                padding: 1.5rem;
+                padding: 1.8rem;
                 max-width: 100%;
                 min-width: unset;
                 width: 100%;
@@ -730,48 +748,48 @@
             }
 
             .main-content {
-                padding: 1rem;
+                padding: 1.5rem;
                 min-width: unset;
             }
 
             .avatar-container {
-                width: 110px;
-                height: 110px;
+                width: 120px;
+                height: 120px;
             }
 
             .avatar {
-                width: 110px;
-                height: 110px;
+                width: 120px;
+                height: 120px;
             }
 
             .avatar-decoration {
-                width: 140px;
-                height: 140px;
-                top: -15px;
-                left: -15px;
+                width: 156px;
+                height: 156px;
+                top: -18px;
+                left: -18px;
             }
 
             .status-circle {
-                width: 22px;
-                height: 22px;
-                bottom: -5px;
-                right: -5px;
+                width: 26px;
+                height: 26px;
+                bottom: -6px;
+                right: -6px;
             }
 
             .username {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
             }
 
             .user-handle {
-                font-size: 0.9rem;
+                font-size: 0.95rem;
             }
 
             .activity-status {
-                font-size: 0.8rem;
+                font-size: 0.85rem;
             }
 
             .no-activity {
-                padding: 1rem;
+                padding: 1.5rem;
             }
         }
 
@@ -781,17 +799,17 @@
             }
 
             .main-content {
-                max-width: 320px;
-                min-width: 280px;
-                padding: 1.2rem;
+                max-width: 420px;
+                min-width: 320px;
+                padding: 2rem;
             }
         }
 
         @media (min-width: 1200px) {
             .main-content {
-                max-width: 320px;
-                min-width: 300px;
-                padding: 1.4rem;
+                max-width: 450px;
+                min-width: 350px;
+                padding: 2.2rem;
             }
         }
 
@@ -821,70 +839,114 @@
             0% {
                 transform: rotate(0deg);
             }
-
             100% {
                 transform: rotate(360deg);
             }
         }
 
+        /* Redesigned links section with more dynamic grid layout */
         .links-section {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            gap: 18px;
+            margin-top: 1.5rem;
+            width: 100%;
         }
 
         .link-card {
-            background-color: var(--card);
-            border-radius: 10px;
-            padding: 15px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            border-radius: 16px;
+            padding: 18px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             text-decoration: none;
-            color: var(--text);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            color: white;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .link-card:hover:before {
+            left: 100%;
         }
 
         .link-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .link-card i {
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .link-card:hover i {
+            transform: scale(1.2) rotate(10deg);
         }
 
         .link-text {
             align-items: center;
-            font-size: 13px;
-            font-weight: 300;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .link-card:hover .link-text {
+            transform: translateX(2px);
         }
 
         .custom-cursor {
             cursor: url(pointer.png), auto !important;
         }
 
+        /* Enhanced badges with better hover effects */
         .badges {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 6px;
-            margin-top: 4px;
+            gap: 8px;
+            margin-top: 6px;
         }
 
         .badge {
             position: relative;
             display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            transform: translateY(-2px);
         }
 
         .badge img {
-            width: 19px;
+            width: 22px;
             border-radius: 50%;
             transform: scale(0.9);
-            height: 19px;
+            height: 22px;
             object-fit: contain;
-            transition: transform 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
         .badge:hover img {
-            transform: scale(1.2);
+            transform: scale(1.3) rotate(15deg);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         }
 
         .badge-tooltip {
@@ -893,32 +955,37 @@
             bottom: 100%;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             color: white;
-            font-size: 0.7rem;
-            padding: 4px 8px;
-            border-radius: 4px;
+            font-size: 0.75rem;
+            padding: 6px 10px;
+            border-radius: 6px;
             white-space: nowrap;
             z-index: 5;
             opacity: 0;
-            transition: opacity 0.2s ease, visibility 0.2s ease;
+            transition: all 0.3s ease;
+            margin-bottom: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .badge:hover .badge-tooltip {
             visibility: visible;
             opacity: 1;
+            transform: translateX(-50%) translateY(-5px);
         }
     </style>
+
 </head>
 
 <body>
 
-    <body class="custom-cursor"></body>
+    <body class="custom-cursor"><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4e654bb13af24e05af75d22c9dba548a","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
     <div class="particles" id="particles"></div>
     <div class="main-content">
         <div class="avatar-container" id="avatarContainer" onclick="profileClick()">
-            <img id="avatar" class="avatar" src="" alt="Avatar">
-            <img id="avatar-decoration" class="avatar-decoration" src="" alt="Decoration" style="display: none;">
+            <img id="avatar" class="avatar" src="/placeholder.svg" alt="Avatar">
+            <img id="avatar-decoration" class="avatar-decoration" src="/placeholder.svg" alt="Decoration" style="display: none;">
             <div class="status-circle" id="statusCircle"></div>
         </div>
         <div class="username" id="username">
@@ -927,16 +994,18 @@
         <div class="user-handle" id="handle">loading...</div>
         <div class="activity-status" id="activityStatus">loading...</div>
         <div class="support-info">
-            <a href="https://x.com/flairiswinning">Twitter</a><br>
-            <a href="https://discord.com/users/1163470989867356210">My Discord</a><br>
-            <a href="https://cfxresolver.com">CFX/Fivem Resolver</a><br>
-            Contact: <a href="https://discord.com/users/1163470989867356210" target="_blank">
-Discord
+            <a href="https://closetcheats.com">Closet Cheats Website</a><br>
+            <a href="https://discord.com/invite/closetcheats">Closet Cheats Discord</a><br>
+            <a href="https://x.com/flairain">Twitter</a><br>
+            <a href="https://discordapp.com/users/1163470989867356210" target="_blank">
+  Contact Me!
+</a>
+
 </a><br>
         </div>
         </a><br>
         <div class="links-section">
-            <a href="https://t.me/cloudflore" class="link-card" target="_blank">
+            <a href="https://t.me/notflair" class="link-card" target="_blank">
                 <i class="fa-brands fa-telegram"></i>
                 <span class="link-text">Telegram</span>
             </a>
@@ -946,29 +1015,30 @@ Discord
                 <span class="link-text">Discord</span>
             </a>
 
-            <a href="https://cfxresolver.com" class="link-card" target="_blank">
+            <a href="https://closetcheats.com" class="link-card" target="_blank">
                 <i class="fa-solid fa-globe"></i>
-                <span class="link-text">CFX Resolver</span>
+                <span class="link-text">closetcheats.com</span>
             </a>
-            <a href="https://t.me/flairrrr" class="link-card" target="_blank">
+            <a href="https://discord.gg/closetcheats" class="link-card" target="_blank">
                 <i class="fa-brands fa-telegram"></i>
-                <span class="link-text">Telegram</span>
+                <span class="link-text">Closet Cheats</span>
             </a>
         </div>
-        <div class="footer">Powered by flair.rip • Protected by eWAF</div>
+        <div class="footer">Made by flair</div>
     </div>
     <div id="loadingScreen">
         <div class="loader"></div>
     </div>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         let showMoreExpanded = false;
+        let lastPlatformState = { web: false, desktop: false, mobile: false, embedded: false, presence: '' };
         const badges = [
                       {
                 description: "Vencord Badge",
                 image: "https://badges.vencord.dev/badges/258723871816024065/1-548da9a0f54d45bcdf1225b80146f21c2198690b.png"
             },
             {
-                description: "Subscriber since Aug 12, 2025",
+                description: "Subscriber since Sep 2, 2025",
                 image: "https://cdn.discordapp.com/badge-icons/2ba85e8026a8614b640c2837bcdfe21b.png"
             },
             {
@@ -980,7 +1050,7 @@ Discord
                 image: "https://cdn.discordapp.com/badge-icons/6bdc42827a38498929a4920da12695d9.png"
             },
             {
-                description: "Server boosting since Aug 12, 2025",
+                description: "Server boosting since Sep 2, 2025",
                 image: "https://discordresources.com/img/boosts/discordboost1.svg"
             },
             {
@@ -1125,7 +1195,6 @@ Discord
                 `;
                 document.head.appendChild(style);
                 const iconsContainer = document.getElementById("platformIcons");
-                iconsContainer.innerHTML = "";
                 const customIcons = {
                     online: {
                         desktop: "https://images-ext-1.discordapp.net/external/5nuotpuDZz0ODf85QHQMtB4FVCL5vSSbKfhhSpPxYRg/%3Fquality%3Dlossless/https/cdn.discordapp.com/emojis/1380457111971954782.png",
@@ -1143,23 +1212,42 @@ Discord
                         web: "https://images-ext-1.discordapp.net/external/DtbIe_ElMFVXe85vDypgEnaEqls2ZRAdDO8hMPIa8FM/%3Fquality%3Dlossless/https/cdn.discordapp.com/emojis/1380457101297717370.png"
                     }
                 };
-                function appendPlatformIcon(platform, isActive) {
-                    if (!isActive) return;
-                    const iconUrl = customIcons[presence]?.[platform];
-                    if (iconUrl) {
-                        const img = document.createElement("img");
-                        img.src = iconUrl;
-                        img.alt = `${platform} icon`;
-                        img.style.width = "28px";
-                        img.style.height = "28px";
-                        img.style.borderRadius = "6px";
-                        iconsContainer.appendChild(img);
+                // Only update icons if platform state or presence has changed
+                const currentPlatformState = {
+                    web: activeWeb,
+                    desktop: activeDesktop,
+                    mobile: activeMobile,
+                    embedded: activeEmbedded,
+                    presence: presence
+                };
+                const stateChanged = 
+                    lastPlatformState.web !== currentPlatformState.web ||
+                    lastPlatformState.desktop !== currentPlatformState.desktop ||
+                    lastPlatformState.mobile !== currentPlatformState.mobile ||
+                    lastPlatformState.embedded !== currentPlatformState.embedded ||
+                    lastPlatformState.presence !== currentPlatformState.presence;
+                
+                if (stateChanged) {
+                    iconsContainer.innerHTML = "";
+                    function appendPlatformIcon(platform, isActive) {
+                        if (!isActive) return;
+                        const iconUrl = customIcons[presence]?.[platform];
+                        if (iconUrl) {
+                            const img = document.createElement("img");
+                            img.src = iconUrl;
+                            img.alt = `${platform} icon`;
+                            img.style.width = "28px";
+                            img.style.height = "28px";
+                            img.style.borderRadius = "6px";
+                            iconsContainer.appendChild(img);
+                        }
                     }
+                    appendPlatformIcon("web", activeWeb);
+                    appendPlatformIcon("desktop", activeDesktop);
+                    appendPlatformIcon("mobile", activeMobile);
+                    if (activeEmbedded) iconsContainer.innerHTML += '<i class="fas fa-code"></i>';
+                    lastPlatformState = currentPlatformState;
                 }
-                appendPlatformIcon("web", activeWeb);
-                appendPlatformIcon("desktop", activeDesktop);
-                appendPlatformIcon("mobile", activeMobile);
-                if (activeEmbedded) iconsContainer.innerHTML += '<i class="fas fa-code"></i>';
                 const activityContainer = document.getElementById("activityStatus");
                 if (activities.length === 0) {
                     activityContainer.innerHTML = `
@@ -1167,7 +1255,6 @@ Discord
                         <div class="no-activity-text">Currently Idle</div>
                         <div class="no-activity-subtext">
                             No active applications detected<br>
-                            Probably chilling or coding something cool
                         </div>
                         <div class="floating-dots">
                             <div class="dot"></div>
@@ -1252,7 +1339,7 @@ Discord
                 }
             }
             if (!imageUrl) {
-                imageUrl = "https://i.pinimg.com/736x/9e/04/bc/9e04bc880b3d9df0c03e8f05ee4768c0.jpg";
+                imageUrl = "https://i.pinimg.com/1200x/18/96/8a/18968aa79e291b78cd70a3b3ab2fec2a.jpg";
             }
             let musicVisualizerHTML = "";
             let progressBarHTML = "";
@@ -1296,7 +1383,7 @@ Discord
                     <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; width: 100%;">
                         <img src="${imageUrl}" alt="activity thumbnail" />
                         <div style="flex: 1; min-width: 150px;">
-                        <span>${activity.name} ${activity.details ? ` – ${activity.details}` : ""}</span>
+                        <span>${activity.name} ${activity.details ? ` ? ${activity.details}` : ""}</span>
                             ${musicVisualizerHTML}
                             ${progressBarHTML}
                         </div>
